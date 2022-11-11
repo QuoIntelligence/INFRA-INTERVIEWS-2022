@@ -1,0 +1,11 @@
+- name: "Test"
+  hosts: all
+  become: yes
+  gather_facts: yes
+  vars:
+    group_value: 'Hello'
+
+  tasks:
+    - name: DEBUG
+      debug:
+        var: group_value

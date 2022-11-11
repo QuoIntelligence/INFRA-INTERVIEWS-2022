@@ -1,0 +1,42 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+cluster = {
+  "box1" => { :ip => "192.168.56.31", :cpus => 1, :mem => 512 , :ssh_port => 2200},
+  "box2" => { :ip => "192.168.56.32", :cpus => 1, :mem => 512 , :ssh_port => 2201},
+  "box3" => { :ip => "192.168.56.33", :cpus => 1, :mem => 512 , :ssh_port => 2202}
+}
+
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  cluster.each_with_index do |(hostname, info), index|
+      config.hostmanager.enabled = true
+      config.hostmanager.manage_host = true
+      config.hostmanager.manage_guest = true
+      config.hostmanager.ignore_private_ip = false
+      config.hostmanager.include_offline = true
+
+    config.vm.define hostname do |cfg|
+      cfg.vm.provider :virtualbox do |vb, override|
+        config.vm.box = "geerlingguy/debian10"
+        override.vm.network :private_network, ip: "#{info[:ip]}"
+        override.vm.network :forwarded_port, guest: 22, host: "#{info[:ssh_port]}", id: 'ssh'
+        override.vm.hostname = hostname
+#        override.hostmanager.aliases = %w(hostname.local.qi.io)
+        vb.name = hostname
+        vb.customize ["modifyvm", :id, "--memory", info[:mem], "--cpus", info[:cpus], "--hwvirtex", "on"]
+      end # end provider
+
+      if Vagrant.has_plugin?("vagrant-cachier")
+        config.cache.scope = :box
+      end
+      if Vagrant.has_plugin?("vagrant-vbguest") then
+        config.vbguest.auto_update = false
+      end
+
+      config.ssh.insert_key = false
+    end # end config
+  end # end cluster
+end

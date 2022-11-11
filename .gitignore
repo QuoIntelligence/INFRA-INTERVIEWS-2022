@@ -1,0 +1,3 @@
+.vagrant
+.idea
+ansible_fact_caching*
