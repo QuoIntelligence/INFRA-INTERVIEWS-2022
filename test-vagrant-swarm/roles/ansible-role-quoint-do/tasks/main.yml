@@ -1,0 +1,13 @@
+---
+# tasks file for ansible-role-quoint-do
+- name: Install Trusted CAs
+  include_tasks: 01-ca-install.yml
+
+#- name: Install admin user
+#  include: 02-admin-user.yml
+
+- name: Install base settings
+  include_tasks: 03-base-settings.yml
+
+#- name: Install Entropy service
+#  include_tasks: 04-entropy.yml

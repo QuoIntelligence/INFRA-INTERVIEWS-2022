@@ -1,0 +1,26 @@
+---
+- name: Copy entropy.sh
+  copy:
+    src: entropy.sh
+    dest: /usr/sbin/entropy.sh
+    owner: root
+    group: root
+    mode: 0755
+    changed_when: false
+
+- name: Copy entropy.service
+  copy:
+    src: entropy.service
+    dest: /etc/systemd/system/entropy.service
+    owner: root
+    group: root
+    mode: 0644
+  changed_when: false
+
+- name: Enable entropy.service
+  ansible.builtin.systemd:
+    name: entropy.service
+    state: started
+    enabled: yes
+  notify: daemon_reload
+  changed_when: false

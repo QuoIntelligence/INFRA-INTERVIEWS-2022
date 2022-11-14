@@ -1,0 +1,27 @@
+- name: Check current fingerprints
+  shell: >
+    awk -v cmd='openssl x509 -noout -fingerprint' '/BEGIN/{close(cmd)};{print | cmd}'
+    < /etc/ssl/certs/ca-certificates.crt
+  register: current_cas
+  changed_when: false
+
+- name: Get current fingerprint
+  shell: >
+    echo "{{ item.cert }}" |
+    openssl x509 -noout -fingerprint -in /dev/stdin
+  register: ca_fingerprint
+  changed_when: false
+
+- name: Add Trusted CAs
+  lineinfile:
+    create: yes
+    line: "{{ item.cert }}"
+    path: "/usr/local/share/ca-certificates/{{ item.alias }}.crt"
+    owner: root
+    group: root
+    mode: 0644
+  when: ca_fingerprint.stdout_lines[0] not in current_cas.stdout_lines
+
+- name: Updte ca-certificates.crt
+  shell: update-ca-certificates
+  when: ca_fingerprint.stdout_lines[0] not in current_cas.stdout_lines

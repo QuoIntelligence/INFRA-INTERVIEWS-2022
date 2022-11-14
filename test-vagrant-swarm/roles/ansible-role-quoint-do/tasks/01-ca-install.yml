@@ -1,0 +1,6 @@
+---
+- name: Add Trusted CAs
+  include_tasks: add-trusted-ca.yml
+  loop: "{{ trusted_cas }}"
+  when: trusted_cas is defined
+  no_log: True

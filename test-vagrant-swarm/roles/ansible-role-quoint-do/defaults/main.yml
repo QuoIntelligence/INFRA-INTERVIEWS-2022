@@ -1,0 +1,53 @@
+---
+# defaults file for ansible-role-quoint-do
+trusted_cas:
+  - alias: 'QuointSigningCA'
+    cert: |
+          -----BEGIN CERTIFICATE-----
+          MIIC8zCCAlSgAwIBAgIRAMcAB0QH4VCSxZ3WVbQeRvYwCgYIKoZIzj0EAwQwgbcx
+          CzAJBgNVBAYTAkRFMQ4wDAYDVQQIDAVIZXNzZTESMBAGA1UEBwwJRnJhbmtmdXJ0
+          MR0wGwYDVQQKDBRRdW9pbnRlbGxpZ2VuY2UgR21iSDEUMBIGA1UECwwLRW5naW5l
+          ZXJpbmcxIDAeBgNVBAMMF1F1b0ludGVsbGlnZW5jZSBSb290IENBMS0wKwYJKoZI
+          hvcNAQkBFh5lbmdpbmVlcmluZ0BxdW9pbnRlbGxpZ2VuY2UuZXUwHhcNMjAwNDEy
+          MTYzMzA3WhcNMzAwNDEwMTYzMjU3WjAlMSMwIQYDVQQDExpRdW9JbnRlbGxpZ2Vu
+          Y2UgU2lnbmluZyBDQTCBmzAQBgcqhkjOPQIBBgUrgQQAIwOBhgAEABPcGJgv3cjk
+          DB81VIcj18xfRUHqJ04s0e/9EPKq+zufBeIWYt6eQGUp+0mCn+6KmgExR3gINwmb
+          ZOUH1XYgh+8YAfGX0bQ9fQEX6qibh6MZ3V1S1Y44NFkkYKOy127vLdZdI3Q7AL3N
+          NmZtQNdv5BKovGrWjGsOu72SUF8f0dyXyPiRo4GOMIGLMA4GA1UdDwEB/wQEAwIB
+          BjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBQpnJHJxguznu/a23KG4+bl
+          jdwCtjAfBgNVHSMEGDAWgBSeTzw33V7CMWiN+ZWhGsboRp9niTAlBgNVHREEHjAc
+          ghpRdW9JbnRlbGxpZ2VuY2UgU2lnbmluZyBDQTAKBggqhkjOPQQDBAOBjAAwgYgC
+          QgEX0BeKyZfUraEd3B2H7wCA0IBJFOfg2gs8v4dvbf2LMhXEij2nTebxnlOTSnq4
+          9jOQOKPRRqzWJbTFpL23UquUXgJCAM17Xa4zq7wSkv/5+8tJW+trq3t45tWxA32x
+          DSnIeN70XtMEpoFqfQ+j/UPQCHZklHtxzaFyb2LFMb+rxETh8xPU
+          -----END CERTIFICATE-----
+  - alias: 'QuointRootCA'
+    cert: |
+          -----BEGIN CERTIFICATE-----
+          MIIDTDCCAq6gAwIBAgIUMhlvV9BDL+Q+UtD1kbm9RCAZhkgwCgYIKoZIzj0EAwIw
+          gbcxCzAJBgNVBAYTAkRFMQ4wDAYDVQQIDAVIZXNzZTESMBAGA1UEBwwJRnJhbmtm
+          dXJ0MR0wGwYDVQQKDBRRdW9pbnRlbGxpZ2VuY2UgR21iSDEUMBIGA1UECwwLRW5n
+          aW5lZXJpbmcxIDAeBgNVBAMMF1F1b0ludGVsbGlnZW5jZSBSb290IENBMS0wKwYJ
+          KoZIhvcNAQkBFh5lbmdpbmVlcmluZ0BxdW9pbnRlbGxpZ2VuY2UuZXUwHhcNMjAw
+          NDEyMTYzMTI3WhcNMzAwNDEwMTYzMTI3WjCBtzELMAkGA1UEBhMCREUxDjAMBgNV
+          BAgMBUhlc3NlMRIwEAYDVQQHDAlGcmFua2Z1cnQxHTAbBgNVBAoMFFF1b2ludGVs
+          bGlnZW5jZSBHbWJIMRQwEgYDVQQLDAtFbmdpbmVlcmluZzEgMB4GA1UEAwwXUXVv
+          SW50ZWxsaWdlbmNlIFJvb3QgQ0ExLTArBgkqhkiG9w0BCQEWHmVuZ2luZWVyaW5n
+          QHF1b2ludGVsbGlnZW5jZS5ldTCBmzAQBgcqhkjOPQIBBgUrgQQAIwOBhgAEAJCS
+          2/Vdg4Ri7s78CZqwyyz/SaEDc5wG5Hk4CVdb+ZDeYLcC2gne9YupTo5D9ErpuAJ9
+          tL7VJtbCjn4Qrr7ZcJtUAFeVtDP2i/2MW/qpatpVun019EKVFfbfkkx5lMRxYbKf
+          qOoIoX7ku9ZohKOC+3AHAB6SQ6A8ZDDjwlcwFo3Xzf5zo1MwUTAdBgNVHQ4EFgQU
+          nk88N91ewjFojfmVoRrG6EafZ4kwHwYDVR0jBBgwFoAUnk88N91ewjFojfmVoRrG
+          6EafZ4kwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgOBiwAwgYcCQgF0Xh3o
+          CDYouSfNq2tlR2ZAw/eoBbsjLW3mwk9rzR2t29WsgGX1kYFDRogiXIdSxvU469pB
+          XG/X29h+kU5Jby/l0wJBQj7jkBbS7g4aZ8CJR/0zOQ50/mNXTLC041t5odngWE6y
+          O0N/qPN6QzleuS5vI9tN1wWpXQNGIN0u4pCJ3TKWyFc=
+          -----END CERTIFICATE-----
+extra_packages:
+  - htop
+  - dnsutils
+  - nmap
+  - curl
+  - ca-certificates
+  - git
+  - git-lfs

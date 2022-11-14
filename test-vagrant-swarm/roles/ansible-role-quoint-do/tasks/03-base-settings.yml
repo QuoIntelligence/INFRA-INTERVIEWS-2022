@@ -1,0 +1,24 @@
+---
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install extra packages
+  ansible.builtin.apt:
+    name: "{{ extra_packages }}"
+    state: present
+
+# echo "vm.max_map_count=275000" >> /etc/sysctl.conf
+# echo '{"max-concurrent-uploads": 1,"max-concurrent-downloads": 1}' > /etc/docker/daemon.json
+
+# - name: Elastic Search configurations
+
+- name: Download DigitalOcean repos and droplet monitoring
+  ansible.builtin.get_url:
+    url: https://repos-droplet.digitalocean.com/install.sh
+    dest: /opt
+    mode: '0755'
+
+- name: Install DigitalOcean droplet monitoring.
+  shell: /opt/install.sh

@@ -1,0 +1,9 @@
+[Unit]
+Description=Entropy Generator: generates enough entropy with processs haveged (needs privileged access so can't be a swarm sevice)
+After=docker.service
+[Service]
+ExecStart=/usr/sbin/entropy.sh
+Nice=15
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
